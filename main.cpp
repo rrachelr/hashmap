@@ -1,10 +1,9 @@
 #include "makeHash.hpp"
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-    hashMap *table = new hashMap();
-    table->insert("hello", "world");
-    table->printMap();
+    makeHash hash("DrSeuss.txt", "Seussout1.txt");
     return 0;
 }

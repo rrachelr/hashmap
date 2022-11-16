@@ -1,3 +1,7 @@
+#ifndef HASHNODE_HPP_
+#define HASHNODE_HPP_
+
+#include "hashMap.hpp"
 #include <iostream>
 
 using namespace std;
@@ -14,4 +18,7 @@ public:
     hashNode(string str);
     hashNode(string str, string val);
     void addValue(string val);
+    string randVal();
 };
+
+#endif

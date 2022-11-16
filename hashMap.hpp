@@ -1,14 +1,18 @@
+#ifndef HASHMAP_HPP_
+#define HASHMAP_HPP_
+
 #include "hashNode.hpp"
-#include <iostream>
 
 using namespace std;
 
 class hashMap {
     friend class makeHash;
+    friend class main;
     int arraySize;
     hashNode **map;
     string first;
     int numKeys;
+
 public:
     hashMap();
     int hashfn(string key);
@@ -16,3 +20,5 @@ public:
     void remove(string key);
     void printMap();
 };
+
+#endif

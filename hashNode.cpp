@@ -1,5 +1,6 @@
 #include "hashMap.hpp"
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -33,4 +34,8 @@ void hashNode::addValue(string val){
             break;
         }
     }
+}
+
+string hashNode::randVal(){
+    return values[rand()%currSize];
 }

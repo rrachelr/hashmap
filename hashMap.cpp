@@ -1,6 +1,7 @@
 #include "hashMap.hpp"
-#include "makeHash.hpp"
+#include "hashNode.hpp"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -9,6 +10,9 @@ hashMap::hashMap(){
     first = "";
     numKeys = 0;
     map = new hashNode*[arraySize];
+    for (int i = 0; i < arraySize; i++){
+        map[i] = NULL;
+    }
 }
 
 void hashMap::insert(string key, string value){
@@ -17,7 +21,10 @@ void hashMap::insert(string key, string value){
         map[index] = new hashNode(key);
     } else if (map[index]->key == key) {
         map[index]->addValue(value);
+    } else {
+        map[index] = new hashNode(key);
     }
+    numKeys++;
 }
 
 void hashMap::remove(string key){
@@ -25,7 +32,7 @@ void hashMap::remove(string key){
 }
 
 int hashMap::hashfn(string key){
-    return ((int)key[3] + (int)key[1]) % arraySize;
+    return ((int)key[0] + (int)key[1]) % arraySize;
 }
 
 void hashMap::printMap(){

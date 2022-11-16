@@ -18,7 +18,42 @@ void makeHash::readFile(){
     ifstream inFile(inputFile);
     string key = "";
     string value = "";
-    inFile >> key;
 
+    inFile >> key;
+    hashTable->first = key;
     
+    while (inFile >> value) {
+        cout << key << ": " << value << endl;
+        hashTable->insert(key, value);
+        key = value;
+        value = "";
+    }
+
+    hashTable->insert(key, value);
+    cout << endl;
+    inFile.close();
+    hashTable->printMap();
+}
+
+void makeHash::writeFile() {
+    ofstream outFile(outputFile);
+    outFile << hashTable->first << " ";
+    string key = "";
+    string value = "";
+    int totalWords = 0;
+    int lineLen = 0;
+
+    while (totalWords < 500 && value != "") {
+        key = value;
+        outFile << key << " ";
+        if (lineLen == 11){
+            outFile << endl;
+            lineLen = 0;
+        } else {
+            lineLen++;
+        }
+        value = hashTable->map[hashTable->hashfn(key)]->randVal();
+        totalWords++;
+    }
+    outFile.close();
 }
