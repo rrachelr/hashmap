@@ -6,13 +6,13 @@ using namespace std;
 class hashMap {
     friend class makeHash;
     int arraySize;
-    hashNode *map;
+    hashNode **map;
     string first;
     int numKeys;
 public:
     hashMap();
     int hashfn(string k);
-    void insert(string key);
+    void insert(string key, string value);
     void remove(string key);
     void printHash();
 };

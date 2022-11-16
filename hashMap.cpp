@@ -8,13 +8,15 @@ hashMap::hashMap(){
     arraySize = 2000;
     first = "";
     numKeys = 0;
-    map = new hashNode[arraySize];
+    map = new hashNode*[arraySize];
 }
 
-void hashMap::insert(string key){
+void hashMap::insert(string key, string value){
     int index = hashfn(key);
     if (map[index] == NULL){
         map[index] = new hashNode(key);
+    } else if (map[index]->key == key) {
+        map[index]->addValue(value);
     }
 }
 
@@ -30,7 +32,10 @@ int hashMap::hashfn(string key){
 void hashMap::printHash(){
     for (int i = 0; i < arraySize; i++){
         if (map[i] != NULL){
-            cout << map[i].key << ": ";
+            cout << map[i]->key << ": ";
+            for (int j = 0; j < map[i]->currSize; j++) {
+                cout << map[i]->values[j] << ", ";
+            }
             cout << endl;
         }
     }
