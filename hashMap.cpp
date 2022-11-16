@@ -22,14 +22,13 @@ void hashMap::insert(string key, string value){
 
 void hashMap::remove(string key){
     int index = hashfn(key);
-
 }
 
 int hashMap::hashfn(string key){
-
+    return ((int)key[3] + (int)key[1]) % arraySize;
 }
 
-void hashMap::printHash(){
+void hashMap::printMap(){
     for (int i = 0; i < arraySize; i++){
         if (map[i] != NULL){
             cout << map[i]->key << ": ";

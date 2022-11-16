@@ -11,8 +11,8 @@ class hashMap {
     int numKeys;
 public:
     hashMap();
-    int hashfn(string k);
+    int hashfn(string key);
     void insert(string key, string value);
     void remove(string key);
-    void printHash();
+    void printMap();
 };
