@@ -4,6 +4,7 @@
 using namespace std;
 
 class makeHash {
+    hashMap *hashTable;
     string inputFile;
     string outputFile;
 public:
