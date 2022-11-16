@@ -7,6 +7,12 @@ class hashMap {
     friend class makeHash;
     int arraySize;
     hashNode *map;
+    string first;
+    int numKeys;
 public:
-    int hashFn()
-}
+    hashMap();
+    int hashfn(string k);
+    void insert(string key);
+    void remove(string key);
+    void printHash();
+};
