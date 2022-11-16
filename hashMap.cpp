@@ -22,13 +22,18 @@ void hashMap::insert(string key, string value){
     } else if (map[index]->key == key) {
         map[index]->addValue(value);
     } else {
-        map[index] = new hashNode(key);
+        index = collision(index, key);
+        map[index] = new hashNode(key, value);
     }
     numKeys++;
 }
 
-void hashMap::remove(string key){
+int hashMap::collision(int index, string key){
     int index = hashfn(key);
+    while ((map[index] != NULL) && (map[index]->key != key) && (index < arraySize)){
+        index++;
+    }
+    return index;
 }
 
 int hashMap::hashfn(string key){
