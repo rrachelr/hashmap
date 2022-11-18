@@ -17,6 +17,7 @@ public:
     hashMap();
     int hashfn(string key);
     void insert(string key, string value);
+    int getIndex(string key);
     int collision(int index, string key);
     void printMap();
 };

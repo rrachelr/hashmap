@@ -16,9 +16,9 @@ hashMap::hashMap(){
 }
 
 void hashMap::insert(string key, string value){
-    int index = hashfn(key);
+    int index = getIndex(key);
     if (map[index] == NULL){
-        map[index] = new hashNode(key);
+        map[index] = new hashNode(key,value);
     } else if (map[index]->key == key) {
         map[index]->addValue(value);
     } else {
@@ -26,6 +26,14 @@ void hashMap::insert(string key, string value){
         map[index] = new hashNode(key, value);
     }
     numKeys++;
+}
+
+int hashMap::getIndex(string key){
+    int index = hashfn(key);
+    if ((map[index] != NULL) && (map[index]->key != key)){
+        index = collision(index, key);
+    }
+    return index;
 }
 
 int hashMap::collision(int index, string key){

@@ -24,7 +24,6 @@ void makeHash::readFile(){
     hashTable->first = key;
     
     while (inFile >> value) {
-        cout << key << ": " << value << endl;
         hashTable->insert(key, value);
         key = value;
         value = "";
@@ -37,11 +36,10 @@ void makeHash::readFile(){
 }
 
 void makeHash::writeFile() {
-    cout << "hello" << endl;
     ofstream outFile(outputFile.c_str(), ios::out);
     outFile << hashTable->first << " ";
     string key = "";
-    string value = "";
+    string value = hashTable->map[hashTable->getIndex(hashTable->first)]->randVal();
     int totalWords = 0;
     int lineLen = 0;
 
@@ -54,7 +52,7 @@ void makeHash::writeFile() {
         } else {
             lineLen++;
         }
-        value = hashTable->map[hashTable->hashfn(key)]->randVal();
+        value = hashTable->map[hashTable->getIndex(key)]->randVal();
         totalWords++;
     }
     outFile.close();

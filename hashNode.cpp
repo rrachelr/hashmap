@@ -40,5 +40,8 @@ void hashNode::addValue(string val){
 }
 
 string hashNode::randVal(){
-    return values[rand()%currSize];
+    string random;
+    random = values[rand()%currSize];
+    cout << random << endl;
+    return random;
 }
