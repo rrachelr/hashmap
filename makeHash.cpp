@@ -1,6 +1,7 @@
 #include "makeHash.hpp"
 #include "hashMap.hpp"
 #include <iostream>
+#include <stdlib.h>
 #include <string>
 #include <fstream>
 
@@ -15,7 +16,7 @@ makeHash::makeHash(string inFile, string outFile){
 }
 
 void makeHash::readFile(){
-    ifstream inFile(inputFile);
+    ifstream inFile(inputFile.c_str(), ios::in);
     string key = "";
     string value = "";
 
@@ -36,7 +37,8 @@ void makeHash::readFile(){
 }
 
 void makeHash::writeFile() {
-    ofstream outFile(outputFile);
+    cout << "hello" << endl;
+    ofstream outFile(outputFile.c_str(), ios::out);
     outFile << hashTable->first << " ";
     string key = "";
     string value = "";

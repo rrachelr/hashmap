@@ -1,6 +1,7 @@
 #include "hashMap.hpp"
 #include <iostream>
 #include <cstdlib>
+#include <time.h>
 
 using namespace std;
 
@@ -9,6 +10,7 @@ hashNode::hashNode(){
     values = new string[100];
     valSize = 100;
     currSize = 0;
+    srand(time(NULL));
 }
 
 hashNode::hashNode(string str){
@@ -16,6 +18,7 @@ hashNode::hashNode(string str){
     values = new string[100];
     valSize = 100;
     currSize = 0;
+    srand(time(NULL));
 }
 
 hashNode::hashNode(string str, string val){

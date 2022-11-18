@@ -6,7 +6,7 @@
 using namespace std;
 
 hashMap::hashMap(){
-    arraySize = 2000;
+    arraySize = 4000;
     first = "";
     numKeys = 0;
     map = new hashNode*[arraySize];
@@ -29,9 +29,8 @@ void hashMap::insert(string key, string value){
 }
 
 int hashMap::collision(int index, string key){
-    int index = hashfn(key);
     while ((map[index] != NULL) && (map[index]->key != key) && (index < arraySize)){
-        index++;
+        index += 1 % arraySize;
     }
     return index;
 }
